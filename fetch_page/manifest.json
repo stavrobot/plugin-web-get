@@ -1,0 +1,15 @@
+{
+  "name": "fetch_page",
+  "description": "Fetches the content of a web page and returns it as a file. Follows redirects and captures the final URL.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "url": {
+      "type": "string",
+      "description": "The URL of the page to fetch."
+    },
+    "strip_html": {
+      "type": "boolean",
+      "description": "Whether to strip HTML tags and return plain text. Defaults to true. Set to false to get the raw HTML."
+    }
+  }
+}

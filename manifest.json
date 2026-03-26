@@ -1,0 +1,4 @@
+{
+  "name": "web-get",
+  "description": "Fetches the content of a web page and returns it, optionally preserving HTML."
+}
