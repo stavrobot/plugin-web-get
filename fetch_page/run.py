@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run
 # /// script
-# dependencies = ["requests", "beautifulsoup4"]
+# dependencies = ["curl_cffi", "beautifulsoup4"]
 # ///
 
 import json
@@ -16,13 +16,13 @@ def main() -> None:
     # The manifest schema doesn't support defaults, so we handle the default here.
     strip_html = params.get("strip_html", True)
 
-    import requests
+    from curl_cffi import requests
     from bs4 import BeautifulSoup
 
     response = requests.get(
         url,
         timeout=20,
-        headers={"User-Agent": "Mozilla/5.0 (compatible)"},
+        impersonate="chrome",
     )
     response.raise_for_status()
 
