@@ -4,6 +4,7 @@
 # ///
 
 import json
+import os
 import sys
 import uuid
 from pathlib import Path
@@ -31,7 +32,9 @@ def main() -> None:
         print(f"Response from {url} exceeds 24MB limit, aborting.", file=sys.stderr)
         sys.exit(1)
 
-    output_dir = Path("/tmp/web-get")
+    # The plugin-runner passes a per-run directory in STAVROBOT_TEMP_DIR. The fallback
+    # keeps the plugin working on plugin-runners that predate it.
+    output_dir = Path(os.environ.get("STAVROBOT_TEMP_DIR", "/tmp/web-get"))
     output_dir.mkdir(parents=True, exist_ok=True)
 
     file_id = uuid.uuid4().hex
